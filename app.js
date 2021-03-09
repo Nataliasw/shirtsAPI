@@ -16,6 +16,7 @@ mongoose.connect("mongodb://localhost:27017/shirtDB", {
 
 
 const shirtSchema = {
+  shirtId: String,
   color: String,
   purchasingDate: String,
   washingConditions: String,
@@ -23,7 +24,7 @@ const shirtSchema = {
 
 const Shirt = mongoose.model("Shirt", shirtSchema);
 
-app.get("/", function(req, res) {
+app.get("/shirts", function(req, res) {
   Shirt.find(function(err, foundShirts) {
     if (!err) {
       res.send(foundShirts)
@@ -33,9 +34,10 @@ app.get("/", function(req, res) {
   });
 });
 
-app.post("/", function(req, res) {
+app.post("/shirts", function(req, res) {
 
   const newShirt = new Shirt({
+    shirtId: req.body.shirtId,
     color: req.body.color,
     purchasingDate: req.body.purchase,
     washingConditions: req.body.wash
@@ -48,6 +50,14 @@ app.post("/", function(req, res) {
     }
   });
 });
+
+app.delete("/shirts/:shirtId", function(req, res) {
+
+})
+
+
+
+
 
 
 app.listen(3000, function() {
