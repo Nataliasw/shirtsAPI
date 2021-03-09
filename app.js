@@ -22,17 +22,53 @@ const shirtSchema = {
   washingConditions: String,
 }
 
+
 const Shirt = mongoose.model("Shirt", shirtSchema);
 
+const shirt1 = new Shirt({
+  shirtId: "01blue",
+  color: "blue",
+  purchasingDate: "09.03.2021",
+  washingConditions: "Hand wash only"
+});
+
+const shirt2 = new Shirt({
+  shirtId: "02blue",
+  color: "blue",
+  purchasingDate: "09.11.2020",
+  washingConditions: "Wash in washing machine, set temp. to 30deg."
+});
+
+const shirt3 = new Shirt({
+  shirtId: "01red",
+  color: "red",
+  purchasingDate: "01.12.2017",
+  washingCondtions: "Wash in washing machine, set temp. to 60deg"
+});
+
+const defaultShirts = [shirt1, shirt2, shirt3];
+
+
 app.get("/shirts", function(req, res) {
-  Shirt.find(function(err, foundShirts) {
-    if (!err) {
-      res.send(foundShirts)
+  Shirt.find({}, function(err, foundShirts) {
+    if (foundShirts.length === 0) {
+      Shirt.insertMany(defaultShirts, function(err) {
+        if (!err) {
+          console.log("Success")
+
+        } else {
+          console.log(err)
+        }
+      });
+      res.redirect("/shirts")
     } else {
-      res.send(err);
+      res.send(foundShirts)
     }
   });
 });
+
+
+
 
 app.post("/shirts", function(req, res) {
 
@@ -73,7 +109,7 @@ app.get("/shirts/:color", function(req, res) {
     } else {
       res.send(err)
     }
-  })
+  });
 });
 
 
