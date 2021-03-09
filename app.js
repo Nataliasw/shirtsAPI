@@ -30,10 +30,24 @@ app.get("/", function(req, res) {
     } else {
       res.send(err);
     }
-  })
-})
+  });
+});
 
+app.post("/", function(req, res) {
 
+  const newShirt = new Shirt({
+    color: req.body.color,
+    purchasingDate: req.body.purchase,
+    washingConditions: req.body.wash
+  });
+  newShirt.save(function(err) {
+    if (!err) {
+      res.send("You added new shirt to your collection!")
+    } else {
+      res.send(err);
+    }
+  });
+});
 
 
 app.listen(3000, function() {
