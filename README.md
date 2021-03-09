@@ -11,14 +11,14 @@ Create your own shirts database
 <p>body-parser</p>
 <p>express</p>
 <p>mongoose</p>
-<p>ejs>
+<p>ejs</p>
 
 ## Getting started:
 
 *  cd to the Project directory
 *  initialize npm and install all npm packages that are required
 *  Start app.js using nodemon
-*  On the other tab in command line start mongodb by typin `mongod`
+*  On the other tab in command line start mongodb by typing `mongod`
 *  Open Postman application and open new Tab
 
 
