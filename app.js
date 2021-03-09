@@ -52,8 +52,16 @@ app.post("/shirts", function(req, res) {
 });
 
 app.delete("/shirts/:shirtId", function(req, res) {
-
-})
+  Shirt.deleteOne({
+    shirtId: req.params.shirtId
+  }, function(err) {
+    if (!err) {
+      res.send("Successfully deleted shirt");
+    } else {
+      res.send(err)
+    }
+  });
+});
 
 
 
