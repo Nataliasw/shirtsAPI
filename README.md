@@ -4,20 +4,21 @@ Create your own shirts database
 
 ## Requirements:
 <p>Node.js installed</p>
-Postman installed</p>
-
+<p>Postman installed</p>
+<p>MongoDB community version installed</p>
 ## Used npm packages:
 <p>nodemon</p>
 <p>body-parser</p>
 <p>express</p>
 <p>mongoose</p>
-
+<p>ejs>
 
 ## Getting started:
 
 *  cd to the Project directory
 *  initialize npm and install all npm packages that are required
 *  Start app.js using nodemon
+*  On the other tab in command line start mongodb by typin `mongod`
 *  Open Postman application and open new Tab
 
 
