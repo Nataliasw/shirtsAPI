@@ -63,8 +63,18 @@ app.delete("/shirts/:shirtId", function(req, res) {
   });
 });
 
-
-
+app.get("/shirts/:color", function(req, res) {
+  Shirt.countDocuments({
+    color: req.params.color
+  }, function(err, count) {
+    if (!err) {
+      const foundNumber = count
+      res.send("There are " + foundNumber + " shirts with this color")
+    } else {
+      res.send(err)
+    }
+  })
+});
 
 
 
